@@ -1,0 +1,106 @@
+from abc import ABC, abstractmethod
+
+# Requirement 1: Abstract Calculator Class
+class AbstractCalculator(ABC):
+    @abstractmethod
+    def add(self, x, y):
+        pass
+
+    @abstractmethod
+    def subtract(self, x, y):
+        pass
+
+    @abstractmethod
+    def multiply(self, x, y):
+        pass
+
+    @abstractmethod
+    def divide(self, x, y):
+        pass
+
+
+# Requirement 2: Concrete Calculator Implementation
+class Calculator(AbstractCalculator):
+    def __init__(self):
+        self._result = 0  # Encapsulating result as a private attribute
+
+    def add(self, x, y):
+        self._result = x + y
+        return self._result
+
+    def subtract(self, x, y):
+        self._result = x - y
+        return self._result
+
+    def multiply(self, x, y):
+        self._result = x * y
+        return self._result
+
+    def divide(self, x, y):
+        if y != 0:
+            self._result = x / y
+            return self._result
+        else:
+            return "Cannot divide by zero"
+
+    def get_result(self):  # Public method to access encapsulated result
+        return self._result
+
+
+# Requirement 3: Scientific Calculator Subclass
+class ScientificCalculator(Calculator):
+    def square(self, x):
+        return x ** 2
+
+    def square_root(self, x):
+        return x ** 0.5
+
+
+# Requirement 4: Reading from File & Writing to File
+# Reading from file
+def read_input_from_file(filename):
+    with open(filename, 'r') as file:
+        inputs = file.readlines()
+    return inputs
+
+# Writing to file
+def write_output_to_file(filename, output):
+    with open(filename, 'w') as file:
+        file.write(output)
+
+
+# Requirement 5: Testing
+import unittest
+
+class TestCalculator(unittest.TestCase):
+    def setUp(self):
+        self.calc = Calculator()
+
+    def test_addition(self):
+        self.assertEqual(self.calc.add(5, 3), 8)
+        self.assertEqual(self.calc.get_result(), 8)  # Testing encapsulation
+        self.assertEqual(self.calc.add(0, 0), 0)
+        self.assertEqual(self.calc.add(-5, 3), -2)
+
+    def test_subtraction(self):
+        self.assertEqual(self.calc.subtract(5, 3), 2)
+        self.assertEqual(self.calc.get_result(), 2)  # Testing encapsulation
+        self.assertEqual(self.calc.subtract(0, 0), 0)
+        self.assertEqual(self.calc.subtract(-5, 3), -8)
+
+    def test_multiplication(self):
+        self.assertEqual(self.calc.multiply(5, 3), 15)
+        self.assertEqual(self.calc.get_result(), 15)  # Testing encapsulation
+        self.assertEqual(self.calc.multiply(0, 0), 0)
+        self.assertEqual(self.calc.multiply(-5, 3), -15)
+
+    def test_division(self):
+        self.assertEqual(self.calc.divide(6, 3), 2)
+        self.assertEqual(self.calc.get_result(), 2)  # Testing encapsulation
+        self.assertEqual(self.calc.divide(0, 5), 0)
+        self.assertEqual(self.calc.divide(10, 2), 5)
+        self.assertEqual(self.calc.divide(5, 0), "Cannot divide by zero")
+
+
+if __name__ == '__main__':
+    unittest.main()
