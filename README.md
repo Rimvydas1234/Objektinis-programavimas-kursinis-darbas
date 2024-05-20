@@ -1,4 +1,5 @@
-1. Įvadas
+Įvadas
+   
 a. Kas yra jūsų programa?
 Ši programa yra skaičiuotuvo programa, skirta atlikti pagrindinius skaičiavimus (sudėtis, atimtis, daugyba ir dalyba), taip pat pažangius mokslinius skaičiavimus (kvadratas ir šaknis).
 Ji įgyvendina pagrindinius objektinio programavimo principus ir dizaino šablonus, siekiant užtikrinti patikimumą ir skalėjimą.
