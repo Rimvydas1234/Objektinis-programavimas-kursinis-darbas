@@ -80,6 +80,7 @@ Factory Method (Requirement 2):
 The create_calculator function acts as a factory method.
 It creates instances of either the Calculator or ScientificCalculator class based on the input type specified.
 This approach enhances flexibility, allowing the code to easily switch between different types of calculators based on requirements.
+
 filename = 'operations.csv'
 operations = read_input_from_file(filename)
 
