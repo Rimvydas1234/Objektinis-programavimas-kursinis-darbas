@@ -121,10 +121,10 @@ Nuskaitymas iš Failo: Skaito skaičiavimus iš CSV formato failo.
 
 def read_input_from_file(filename):
     ...
+    
 Rašymas į Failą: Rašo rezultatus į CSV formato failą.
 
-python
-Kopijuoti kodą
+
 def write_output_to_file(filename, output):
     ...
     
